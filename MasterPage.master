@@ -1,0 +1,40 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+  <title>Hot News</title>
+
+  <asp:ContentPlaceHolder id="head" runat="server">
+  </asp:ContentPlaceHolder>
+</head>
+
+<body>
+  <form id="form1" runat="server">
+  <div>
+    <asp:Image ID="Image1" runat="server" ImageUrl="resources/blue.jpg" Width="100%" Height="200px"/>
+    <asp:Label ID="Label1" style="text-align: center" runat="server" Text="Hot News" Font-Size="30" Width="100%"></asp:Label>
+
+    <table>
+      <tr>
+        <td><asp:Label ID="LoggedInLabel" runat="server" Text="" Visible="false"></asp:Label></td>
+        <td><asp:Button ID="LoginButton" runat="server" Text="Login" OnClick="LoginButton_Clicked"/></td>
+        <td><asp:TextBox ID="SearchTextBox" runat="server"></asp:TextBox></td>
+        <td><asp:Button ID="SearchButton" runat="server" Text="Search" OnClick="SearchButton_Click"/></td>
+      </tr>
+    </table>
+
+    <br />
+    <asp:Menu ID="MasterMenu" runat="server"></asp:Menu>
+    <br />
+    <asp:Label ID="ResponseLabel" runat="server" Visible="false"></asp:Label>
+
+    <asp:ContentPlaceHolder id="body" runat="server"> 
+    </asp:ContentPlaceHolder>
+  </div>
+  </form>
+</body>
+
+</html>
