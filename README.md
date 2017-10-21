@@ -11,3 +11,7 @@ This is a college project, a news website with features like:
 * Editors can publish proposed news
 * Administrators can manage user permissions
 * Connection to database using MySQL
+
+### Technologies
+
+C# with ASP.NET, MySQL database.
