@@ -54,8 +54,8 @@ public class UsersTable : TableBase<UsersTable> {
     SqlDataReader reader = null;
     user = null;
     try {
-      connection.Open();
-      reader = command.ExecuteReader();
+	  connection.Open();
+	  reader = command.ExecuteReader();
 
       if (reader.HasRows) {
         while (reader.Read()) {
@@ -64,8 +64,10 @@ public class UsersTable : TableBase<UsersTable> {
       }
     } catch (Exception ex) {
       error = ex.Message;
-    } finally {
-      reader.Close();
+	  System.Diagnostics.Debug.WriteLine(error);
+
+	} finally {
+      if (reader != null) reader.Close();
       connection.Close();
     }
 

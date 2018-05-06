@@ -30,7 +30,7 @@ public class DomainsTable : TableBase<DomainsTable> {
       error = ex.Message;
       return false;
     } finally {
-      reader.Close();
+	  if (reader != null) reader.Close();
       connection.Close();
     }
 
