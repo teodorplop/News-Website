@@ -18,54 +18,63 @@ public partial class index : System.Web.UI.Page {
 		if (success) {
 			for (int i = 0; i < news.Count; ++i) {
 				Panel panel = new Panel();
-				panel.BackColor = System.Drawing.Color.AntiqueWhite;
-				panel.BorderStyle = BorderStyle.Groove;
-				panel.BorderWidth = new Unit(5f);
+				panel.CssClass = "card mx-auto mb-5";
 
 				if (SessionManager.Instance.HasAdminRights) {
 					Button button = new Button();
 					button.ID = news[i].ID;
+					button.CssClass = "btn btn-secondary";
 					button.Text = "Delete";
 					button.Click += DeleteButton_Clicked;
 					panel.Controls.Add(button);
 				}
 
-				HtmlGenericControl title = new HtmlGenericControl("h1");
-				title.InnerHtml = news[i].title;
-				panel.Controls.Add(title);
-
-				HtmlGenericControl subtitle = new HtmlGenericControl("h5");
-				subtitle.InnerHtml = "by " + news[i].publisher + " at " + news[i].date;
-				panel.Controls.Add(subtitle);
-
 				if (news[i].imageFile != null) {
 					Image image = new Image();
+					image.CssClass = "card-img-top mx-auto col-md-4";
 					image.ImageUrl = "uploads/" + news[i].imageFile;
 					panel.Controls.Add(image);
 				}
 
+				HtmlGenericControl div = new HtmlGenericControl();
+				div.TagName = "div";
+				div.Attributes["class"] = "card-body";
+				panel.Controls.Add(div);
+
+				HtmlGenericControl title = new HtmlGenericControl("h4");
+				title.Attributes["class"] = "card-title text-center";
+				title.InnerHtml = news[i].title;
+				div.Controls.Add(title);
+
+				HtmlGenericControl subtitle = new HtmlGenericControl("h6");
+				subtitle.Attributes["class"] = "card-subtitle mb-2 text-muted text-center";
+				subtitle.InnerHtml = "by " + news[i].publisher + " at " + news[i].date;
+				div.Controls.Add(subtitle);
+
 				HtmlGenericControl content = new HtmlGenericControl("p");
+				content.Attributes["class"] = "card-text mb-5";
 				content.InnerHtml = news[i].content;
-				panel.Controls.Add(content);
+				div.Controls.Add(content);
 
 				if (SessionManager.Instance.HasCommentRights) {
 					TextBox textBox = new TextBox();
 					textBox.ID = news[i].ID + "_textBox";
-					textBox.Width = Unit.Percentage(75);
-					textBox.Height = Unit.Pixel(100);
+					textBox.CssClass = "form-control col-md-4";
 					textBox.TextMode = TextBoxMode.MultiLine;
-					panel.Controls.Add(textBox);
+					div.Controls.Add(textBox);
+
+					Button commentButton = new Button();
+					commentButton.ID = news[i].ID + "_comment";
+					commentButton.CssClass = "btn btn-secondary mb-3";
+					commentButton.Text = "Comment";
+					commentButton.Click += CommentButton_Clicked;
+					div.Controls.Add(commentButton);
 				}
 
-				Button button2 = new Button();
-				button2.ID = news[i].ID + "_comment";
-				button2.Text = "Comment";
-				button2.Click += CommentButton_Clicked;
-				panel.Controls.Add(button2);
-
-				HtmlGenericControl commentsTitle = new HtmlGenericControl("h3");
+				HtmlGenericControl commentsTitle = new HtmlGenericControl("h5");
+				commentsTitle.Attributes["class"] = "card-title";
 				commentsTitle.InnerHtml = "Comments";
-				panel.Controls.Add(commentsTitle);
+				div.Controls.Add(commentsTitle);
 
 				List<Comment> comments;
 				success = CommentsTable.Instance.Select(out comments, out error, news[i].ID);
@@ -74,15 +83,11 @@ public partial class index : System.Web.UI.Page {
 
 					foreach (var comment in comments) {
 						HtmlGenericControl commentText = new HtmlGenericControl("p");
-						commentText.InnerHtml = comment.text;
+						commentText.InnerHtml = "<b>" + comment.username + "</b>" + " " + comment.text;
 						commentsPanel.Controls.Add(commentText);
-
-						HtmlGenericControl commentUser = new HtmlGenericControl("p");
-						commentUser.InnerHtml = "by " + comment.username;
-						commentsPanel.Controls.Add(commentUser);
 					}
 
-					panel.Controls.Add(commentsPanel);
+					div.Controls.Add(commentsPanel);
 				} else {
 					(Master as MasterPage).ShowError(false, error);
 				}
