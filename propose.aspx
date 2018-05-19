@@ -7,24 +7,15 @@
   <asp:Panel ID="EditorPanel" runat="server" Width="100%" Visible="false"></asp:Panel>
 
   <asp:Panel ID="UsersPanel" runat="server" Width="100%" Visible="false">
-  <table>
-    <tr>
-      <td><asp:label runat="server" text="Title"></asp:label></td>
-      <td><asp:textbox ID="TextBoxTitle" runat="server" Width="500px"></asp:textbox></td>
-    </tr>
-    <tr>
-      <td><asp:label runat="server" text="Content"></asp:label></td>
-      <td><asp:textbox ID="TextBoxContent" runat="server" Width="500px" TextMode="Multiline"></asp:textbox></td>
-    </tr>
-    <tr>
-      <td colspan="2"><asp:DropDownList ID="TextBoxDomain" runat="server"></asp:DropDownList></td>
-    </tr>
-    <tr>
-      <td colspan="2"><asp:FileUpload ID="FileUploadControl" runat="server"></asp:FileUpload></td>
-    </tr>
-    <tr>
-      <td colspan="2" style="text-align: right"><asp:button ID="SubmitButton" runat="server" text="Submit" OnClick="SubmitButton_Click" /></td>
-    </tr>
-  </table>
+      <asp:label runat="server" text="Title"></asp:label>
+      <asp:textbox ID="TextBoxTitle" runat="server" Width="500px"></asp:textbox>
+
+      <asp:label runat="server" text="Content"></asp:label>
+      <asp:textbox ID="TextBoxContent" runat="server" Width="500px" TextMode="Multiline"></asp:textbox>
+
+      <asp:DropDownList ID="TextBoxDomain" runat="server"></asp:DropDownList>
+      <asp:FileUpload ID="FileUploadControl" runat="server"></asp:FileUpload>
+
+      <asp:button ID="SubmitButton" runat="server" text="Submit" OnClick="SubmitButton_Click" />
   </asp:Panel>
 </asp:Content>

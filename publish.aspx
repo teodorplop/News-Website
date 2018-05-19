@@ -4,27 +4,23 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
-  <h1>Add new content</h1>
+  <h3 class="h3 mb-3 font-weight-light d-block text-center">Add new content</h3>
 
-  <asp:Panel ID="PublishPanel" runat="server">
-  <table>
-    <tr>
-      <td><asp:label runat="server" text="Title"></asp:label></td>
-      <td><asp:textbox ID="TextBoxTitle" runat="server" Width="500px"></asp:textbox></td>
-    </tr>
-    <tr>
-      <td><asp:label runat="server" text="Content"></asp:label></td>
-      <td><asp:textbox ID="TextBoxContent" runat="server" Width="500px" TextMode="Multiline"></asp:textbox></td>
-    </tr>
-    <tr>
-      <td colspan="2"><asp:DropDownList ID="TextBoxDomain" runat="server"></asp:DropDownList></td>
-    </tr>
-    <tr>
-      <td colspan="2"><asp:FileUpload ID="FileUploadControl" runat="server"></asp:FileUpload></td>
-    </tr>
-    <tr>
-      <td colspan="2" style="text-align: right"><asp:button ID="SubmitButton" runat="server" text="Submit" OnClick="SubmitButton_Click" /></td>
-    </tr>
-  </table>
+  <asp:Panel ID="PublishPanel" CssClass="mx-auto w-50" runat="server">
+      <asp:textbox ID="TextBoxTitle" CssClass="form-control d-block mb-1" runat="server" placeholder="Title"></asp:textbox>
+      <asp:textbox ID="TextBoxContent" CssClass="form-control d-block mb-1" runat="server" placeholder="Content" TextMode="Multiline"></asp:textbox>
+      <div class="row">
+        <div class="col-4 mb-5">
+          <asp:DropDownList ID="TextBoxDomain" CssClass="form-control" runat="server"></asp:DropDownList>
+        </div>
+
+        <div class="col-8 mb-5">
+          <asp:FileUpload ID="FileUploadControl" CssClass="btn btn-outline-dark float-right" runat="server"></asp:FileUpload>
+        </div>
+
+        <div class="col-6 mx-auto">
+          <asp:button ID="SubmitButton" CssClass="btn btn-block btn-outline-success" runat="server" text="Submit" OnClick="SubmitButton_Click" />
+        </div>
+      </div>
   </asp:Panel>
 </asp:Content>
