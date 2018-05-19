@@ -7,10 +7,10 @@ using System.Web;
 /// Summary description for Comment
 /// </summary>
 public class Comment {
-  public string username;
-  public string text;
-  public Comment(string username, string text) {
-    this.username = username;
-    this.text = text;
-  }
+	public string username;
+	public string text;
+	public Comment(string username, string text) {
+		this.username = username;
+		this.text = text;
+	}
 }

@@ -5,30 +5,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head runat="server">
-  <meta charset="utf-8"/>
-  <meta http-equiv="X-UA-Compatible"content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link href="Content/bootstrap.min.css" rel="stylesheet"/>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="Content/bootstrap.min.css" rel="stylesheet" />
 
   <title>Hot News</title>
 
-  <asp:ContentPlaceHolder id="head" runat="server">
+  <asp:ContentPlaceHolder ID="head" runat="server">
   </asp:ContentPlaceHolder>
 </head>
 
 <body>
-  <asp:Panel ID="MenuPanel" runat="server" Width="100%">
-  </asp:Panel>
   <form id="form1" runat="server">
-  <div>
-    <asp:Image ID="Image1" runat="server" ImageUrl="resources/blue.jpg" Width="100%" Height="200px"/>
-    <asp:Label ID="Label1" style="text-align: center" runat="server" Text="Hot News" Font-Size="30" Width="100%"></asp:Label>
+    <asp:Panel ID="MenuPanel" runat="server" Width="100%">
+    </asp:Panel>
+    <div>
+      <asp:Image ID="Image1" runat="server" ImageUrl="resources/blue.jpg" Width="100%" Height="200px" />
+      <asp:Label ID="Label1" Style="text-align: center" runat="server" Text="Hot News" Font-Size="30" Width="100%"></asp:Label>
 
-    <asp:Label ID="ResponseLabel" runat="server" Visible="false"></asp:Label>
+      <asp:Label ID="ResponseLabel" runat="server" Visible="false"></asp:Label>
 
-    <asp:ContentPlaceHolder id="body" runat="server"> 
-    </asp:ContentPlaceHolder>
-  </div>
+      <asp:ContentPlaceHolder ID="body" runat="server">
+      </asp:ContentPlaceHolder>
+    </div>
   </form>
 
   <!--
@@ -38,30 +38,7 @@
     card, cardbody la afisarea articolelor
     buttongroup la articole (delete, publish, etc.)
     carusel cu 4 imagini / 4 linkuri catre home/games...  
-    
-    
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-<a class="navbar-brand" href="#">MyTecBits.com</a>
-<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div id="navbar" class="navbar-collapse collapse">
-<ul class="navbar-nav mr-auto">
-<li class="nav-item active"><a class="nav-link" href="/Default.aspx">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropdown04">Dropdown <span class="caret"></span></a>
-<div class="dropdown-menu" aria-labelledby="dropdown04">
-<a class="dropdown-item" href="#">Action</a>
-<a class="dropdown-item" href="#">Another action</a>
-<a class="dropdown-item" href="#">Something else here</a>
-</div>
-</li>
-</ul>
-</div>
-<!–/.nav-collapse –>
-</nav>-->
+-->
 
   <script src="js/jquery-3.0.0.min.js"></script>
   <script src="js/popper.min.js"></script>
