@@ -61,15 +61,6 @@
       </asp:ContentPlaceHolder>
     </div>
   </form>
-
-  <!--
-    tooltips
-    form la search? poate ajuta
-    modal la login
-    card, cardbody la afisarea articolelor
-    buttongroup la articole (delete, publish, etc.)
-    carusel cu 4 imagini / 4 linkuri catre home/games...  
--->
 </body>
 
 </html>

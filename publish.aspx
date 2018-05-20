@@ -8,7 +8,7 @@
 
   <asp:Panel ID="PublishPanel" CssClass="mx-auto w-50" runat="server">
     <asp:TextBox ID="TextBoxTitle" CssClass="form-control d-block mb-1" runat="server" placeholder="Title"></asp:TextBox>
-    <asp:TextBox ID="TextBoxContent" CssClass="form-control d-block mb-1" runat="server" placeholder="Content" TextMode="Multiline"></asp:TextBox>
+    <asp:TextBox ID="TextBoxContent" CssClass="form-control d-block mb-1" runat="server" placeholder="Content" Rows="20" TextMode="Multiline"></asp:TextBox>
     <div class="row">
       <div class="col-4 mb-5">
         <asp:DropDownList ID="TextBoxDomain" CssClass="form-control" runat="server"></asp:DropDownList>
