@@ -19,6 +19,8 @@ public class CommentsTable : TableBase<CommentsTable> {
 			return false;
 		}
 
+		text = text.Replace("'", "''");
+
 		string commandString = string.Format("INSERT INTO COMMENTS (NewsID, Username, Text) VALUES('{0}', '{1}', '{2}')", newsID, user, text);
 
 		SqlCommand command = new SqlCommand(commandString, connection);

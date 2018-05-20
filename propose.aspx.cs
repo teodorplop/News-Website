@@ -16,26 +16,41 @@ public partial class propose : System.Web.UI.Page {
 		bool success = UsersNewsTable.Instance.Select(out news, out error, new Arguments());
 
 		if (success) {
+			HtmlGenericControl divRow = new HtmlGenericControl();
+			divRow.TagName = "div";
+			divRow.Attributes["class"] = "row";
+			EditorPanel.Controls.Add(divRow);
+
 			for (int i = 0; i < news.Count; ++i) {
+				HtmlGenericControl divCol6 = new HtmlGenericControl();
+				divCol6.TagName = "div";
+				divCol6.Attributes["class"] = "col-6";
+				divRow.Controls.Add(divCol6);
+
 				Panel panel = new Panel();
-				panel.CssClass = "card mx-auto mb-5";
+				panel.CssClass = "card mx-auto mb-5 text-white bg-dark";
 
 				if (SessionManager.Instance.HasPublishRights) {
+					HtmlGenericControl headerDiv = new HtmlGenericControl();
+					headerDiv.TagName = "div";
+					headerDiv.Attributes["class"] = "card-header";
+					panel.Controls.Add(headerDiv);
+
 					HtmlGenericControl btnDiv = new HtmlGenericControl();
 					btnDiv.TagName = "div";
 					btnDiv.Attributes["class"] = "btn-group";
-					panel.Controls.Add(btnDiv);
+					headerDiv.Controls.Add(btnDiv);
 
 					Button deleteButton = new Button();
 					deleteButton.ID = news[i].ID;
-					deleteButton.CssClass = "btn btn-secondary";
+					deleteButton.CssClass = "btn btn-outline-danger";
 					deleteButton.Text = "Delete";
 					deleteButton.Click += DeleteButton_Clicked;
 					btnDiv.Controls.Add(deleteButton);
 
 					Button publishButton = new Button();
 					publishButton.ID = news[i].ID + "()";
-					publishButton.CssClass = "btn btn-secondary";
+					publishButton.CssClass = "btn btn-outline-success";
 					publishButton.Text = "Publish";
 					publishButton.Click += PublishButton_Clicked;
 					btnDiv.Controls.Add(publishButton);
@@ -43,7 +58,7 @@ public partial class propose : System.Web.UI.Page {
 
 				if (news[i].imageFile != null) {
 					Image image = new Image();
-					image.CssClass = "card-img-top mx-auto col-md-4";
+					image.CssClass = "card-img-top mx-auto";
 					image.ImageUrl = "uploads/" + news[i].imageFile;
 					panel.Controls.Add(image);
 				}
@@ -68,7 +83,7 @@ public partial class propose : System.Web.UI.Page {
 				content.InnerHtml = news[i].content;
 				div.Controls.Add(content);
 
-				EditorPanel.Controls.Add(panel);
+				divCol6.Controls.Add(panel);
 			}
 		} else {
 			(Master as MasterPage).ShowError(false, error);
@@ -91,7 +106,6 @@ public partial class propose : System.Web.UI.Page {
 				(Master as MasterPage).ShowError(false, error);
 			}
 		}
-
 	}
 
 	protected void Page_Load(object sender, EventArgs e) {
@@ -156,9 +170,9 @@ public partial class propose : System.Web.UI.Page {
 				return;
 			}
 
-			success = UsersNewsTable.Instance.Insert(out error, TextBoxTitle.Text, TextBoxContent.Text, TextBoxDomain.SelectedValue, fileName);
+			success = UsersNewsTable.Instance.Insert(out error, @TextBoxTitle.Text, @TextBoxContent.Text, TextBoxDomain.SelectedValue, fileName);
 		} else {
-			success = UsersNewsTable.Instance.Insert(out error, TextBoxTitle.Text, TextBoxContent.Text, TextBoxDomain.SelectedValue);
+			success = UsersNewsTable.Instance.Insert(out error, @TextBoxTitle.Text, @TextBoxContent.Text, TextBoxDomain.SelectedValue);
 		}
 
 		if (success) {

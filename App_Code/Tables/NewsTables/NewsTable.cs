@@ -21,6 +21,9 @@ public class NewsTable : TableBase<NewsTable> {
 			return false;
 		}
 
+		title = title.Replace("'", "''");
+		content = content.Replace("'", "''");
+
 		string commandString;
 		if (imageFile != null) {
 			commandString = string.Format("INSERT INTO NEWS (Title, Content, Domain, Publisher, Image) VALUES('{0}', '{1}', '{2}', '{3}', '{4}')", title, content, domain, publisher, imageFile);

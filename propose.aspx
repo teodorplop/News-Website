@@ -8,7 +8,7 @@
 
   <asp:Panel ID="UsersPanel" CssClass="mx-auto w-50" runat="server" Visible="false">
     <asp:TextBox ID="TextBoxTitle" CssClass="form-control d-block mb-1" runat="server" placeholder="Title"></asp:TextBox>
-    <asp:TextBox ID="TextBoxContent" CssClass="form-control d-block mb-1" runat="server" TextMode="Multiline" placeholder="Content"></asp:TextBox>
+    <asp:TextBox ID="TextBoxContent" CssClass="form-control d-block mb-1" runat="server" TextMode="Multiline" Rows="20" placeholder="Content"></asp:TextBox>
 
     <div class="row">
       <div class="col-4 mb-5">

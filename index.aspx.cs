@@ -16,22 +16,37 @@ public partial class index : System.Web.UI.Page {
 		bool success = NewsTable.Instance.Select(out news, out error, arguments);
 
 		if (success) {
+			HtmlGenericControl divRow = new HtmlGenericControl();
+			divRow.TagName = "div";
+			divRow.Attributes["class"] = "row";
+			NewsPanel.Controls.Add(divRow);
+
 			for (int i = 0; i < news.Count; ++i) {
+				HtmlGenericControl divCol6 = new HtmlGenericControl();
+				divCol6.TagName = "div";
+				divCol6.Attributes["class"] = "col-6";
+				divRow.Controls.Add(divCol6);
+
 				Panel panel = new Panel();
-				panel.CssClass = "card mx-auto mb-5";
+				panel.CssClass = "card mx-auto mb-5 text-white bg-dark";
 
 				if (SessionManager.Instance.HasAdminRights) {
+					HtmlGenericControl headerDiv = new HtmlGenericControl();
+					headerDiv.TagName = "div";
+					headerDiv.Attributes["class"] = "card-header";
+					panel.Controls.Add(headerDiv);
+
 					Button button = new Button();
 					button.ID = news[i].ID;
-					button.CssClass = "btn btn-secondary";
+					button.CssClass = "btn btn-outline-danger";
 					button.Text = "Delete";
 					button.Click += DeleteButton_Clicked;
-					panel.Controls.Add(button);
+					headerDiv.Controls.Add(button);
 				}
 
 				if (news[i].imageFile != null) {
 					Image image = new Image();
-					image.CssClass = "card-img-top mx-auto col-md-4";
+					image.CssClass = "card-img-top mx-auto";
 					image.ImageUrl = "uploads/" + news[i].imageFile;
 					panel.Controls.Add(image);
 				}
@@ -56,25 +71,52 @@ public partial class index : System.Web.UI.Page {
 				content.InnerHtml = news[i].content;
 				div.Controls.Add(content);
 
+				HtmlGenericControl showCommentBtn = new HtmlGenericControl();
+				showCommentBtn.TagName = "a";
+				showCommentBtn.Attributes["class"] = "btn btn-outline-light mb-2 btn-block";
+				showCommentBtn.Attributes["data-toggle"] = "collapse";
+				showCommentBtn.Attributes["href"] = "#body_Comments" + i.ToString();
+				showCommentBtn.Attributes["role"] = "button";
+				showCommentBtn.Attributes["aria-expanded"] = "false";
+				showCommentBtn.Attributes["aria-controls"] = "body_Comments" + i.ToString();
+				showCommentBtn.InnerHtml = "Comments";
+				div.Controls.Add(showCommentBtn);
+
+				HtmlGenericControl commentDiv = new HtmlGenericControl();
+				commentDiv.TagName = "div";
+				commentDiv.Attributes["class"] = "collapse";
+				commentDiv.ID = "Comments" + i.ToString();
+				div.Controls.Add(commentDiv);
+
 				if (SessionManager.Instance.HasCommentRights) {
+					HtmlGenericControl inputDiv = new HtmlGenericControl();
+					inputDiv.TagName = "div";
+					inputDiv.Attributes["class"] = "input-group mb-2";
+					commentDiv.Controls.Add(inputDiv);
+
 					TextBox textBox = new TextBox();
 					textBox.ID = news[i].ID + "_textBox";
-					textBox.CssClass = "form-control col-md-4";
+					textBox.CssClass = "form-control";
 					textBox.TextMode = TextBoxMode.MultiLine;
-					div.Controls.Add(textBox);
+					inputDiv.Controls.Add(textBox);
+
+					HtmlGenericControl btnDiv = new HtmlGenericControl();
+					btnDiv.TagName = "div";
+					btnDiv.Attributes["class"] = "input-group-append";
+					inputDiv.Controls.Add(btnDiv);
 
 					Button commentButton = new Button();
 					commentButton.ID = news[i].ID + "_comment";
-					commentButton.CssClass = "btn btn-secondary mb-3";
-					commentButton.Text = "Comment";
+					commentButton.CssClass = "btn btn-info";
+					commentButton.Text = "Post";
 					commentButton.Click += CommentButton_Clicked;
-					div.Controls.Add(commentButton);
+					btnDiv.Controls.Add(commentButton);
 				}
 
 				HtmlGenericControl commentsTitle = new HtmlGenericControl("h5");
 				commentsTitle.Attributes["class"] = "card-title";
 				commentsTitle.InnerHtml = "Comments";
-				div.Controls.Add(commentsTitle);
+				commentDiv.Controls.Add(commentsTitle);
 
 				List<Comment> comments;
 				success = CommentsTable.Instance.Select(out comments, out error, news[i].ID);
@@ -87,12 +129,12 @@ public partial class index : System.Web.UI.Page {
 						commentsPanel.Controls.Add(commentText);
 					}
 
-					div.Controls.Add(commentsPanel);
+					commentDiv.Controls.Add(commentsPanel);
 				} else {
 					(Master as MasterPage).ShowError(false, error);
 				}
 
-				NewsPanel.Controls.Add(panel);
+				divCol6.Controls.Add(panel);
 			}
 		} else {
 			(Master as MasterPage).ShowError(false, error);

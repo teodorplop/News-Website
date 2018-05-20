@@ -16,7 +16,7 @@
     UpdateCommand="UPDATE Users SET Password=@Password, Status=@Status WHERE Username=@Username"
     DeleteCommand="DELETE FROM Users WHERE Username=@Username"></asp:SqlDataSource>
 
-  <asp:GridView CssClass="mx-auto w-50"
+  <asp:GridView CssClass="mx-auto w-50 table-bordered table-dark table-hover"
     ID="GridView1"
     runat="server"
     AutoGenerateColumns="False"
@@ -25,9 +25,9 @@
     DataSourceID="SqlDataSource1"
     >
     <Columns>
-      <asp:BoundField HeaderText="Username" HeaderStyle-CssClass="table-primary" DataField="Username" />
-      <asp:BoundField HeaderText="Password" HeaderStyle-CssClass="table-primary" DataField="Password" />
-      <asp:BoundField HeaderText="Status" HeaderStyle-CssClass="table-primary" DataField="Status" />
+      <asp:BoundField HeaderText="Username" DataField="Username" />
+      <asp:BoundField HeaderText="Password" DataField="Password" />
+      <asp:BoundField HeaderText="Status" DataField="Status" />
     </Columns>
   </asp:GridView>
 </asp:Content>

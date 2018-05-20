@@ -23,6 +23,9 @@ public class UsersNewsTable : TableBase<UsersNewsTable> {
 			return false;
 		}
 
+		title = title.Replace("'", "''");
+		content = content.Replace("'", "''");
+
 		string publisher = SessionManager.Instance.LoggedUser;
 		string commandString;
 		if (imageFile != null) {

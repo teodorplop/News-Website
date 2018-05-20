@@ -21,27 +21,27 @@
     <asp:Panel ID="MenuPanel" runat="server" Width="100%">
     </asp:Panel>
     <div>
-      <asp:Image ID="Image1" runat="server" ImageUrl="resources/blue.jpg" Width="100%" Height="200px" />
+      <div class="container" style="margin-top:55px">
+        <div id="my_carousel" class="carousel slide" data-ride="carousel">
+          <ul class="carousel-indicators">
+            <li data-target="#my_carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#my_carousel" data-slide-to="1"></li>
+            <li data-target="#my_carousel" data-slide-to="2"></li>
+          </ul>
 
-      <!--<div id="my_carousel" class="carousel slide" data-ride="carousel">
-        <ul class="carousel-indicators">
-          <li data-target="#my_carousel" data-slide-to="0" class="active"></li>
-          <li data-target="#my_carousel" data-slide-to="1"></li>
-          <li data-target="#my_carousel" data-slide-to="2"></li>
-        </ul>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-100 img-fluid" src="resources/blue.jpg" alt="First Slide" />
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100 img-fluid" src="resources/blue.jpg" alt="Second Slide" />
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-100 img-fluid" src="resources/blue.jpg" alt="Third Slide" />
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <a href="index.aspx?Domain=Games"><img class="d-block w-100 img-fluid" src="resources/games_news.jpg" alt="First Slide" /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="index.aspx?Domain=Politics"><img class="d-block w-100 img-fluid" src="resources/politics_news.jpeg" alt="Second Slide" /></a>
+            </div>
+            <div class="carousel-item">
+              <a href="index.aspx?Domain=Science"><img class="d-block w-100 img-fluid" src="resources/science_news.jpg" alt="Third Slide" /></a>
+            </div>
           </div>
         </div>
-      </div>-->
+      </div>
 
       <asp:Label ID="Label1" Style="text-align: center" runat="server" Text="Hot News" Font-Size="30" Width="100%"></asp:Label>
 
@@ -61,9 +61,9 @@
     carusel cu 4 imagini / 4 linkuri catre home/games...  
 -->
 
-  <script src="js/jquery-3.0.0.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+  <script src="Scripts/jquery-3.0.0.min.js"></script>
+  <script src="Scripts/popper.min.js"></script>
+  <script src="Scripts/bootstrap.min.js"></script>
 </body>
 
 </html>
