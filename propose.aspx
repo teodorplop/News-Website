@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="propose.aspx.cs" Inherits="propose" %>
+﻿<%@ Page ValidateRequest="false" Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="propose.aspx.cs" Inherits="propose" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
-  <asp:Panel ID="EditorPanel" runat="server" CssClass="mx-auto w-75" Visible="false"></asp:Panel>
+  <asp:Panel ID="EditorPanel" runat="server" CssClass="container" Visible="false"></asp:Panel>
 
   <asp:Panel ID="UsersPanel" CssClass="mx-auto w-50" runat="server" Visible="false">
     <asp:TextBox ID="TextBoxTitle" CssClass="form-control d-block mb-1" runat="server" placeholder="Title"></asp:TextBox>

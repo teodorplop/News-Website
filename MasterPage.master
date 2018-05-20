@@ -9,6 +9,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="Content/bootstrap.min.css" rel="stylesheet" />
+  <link href="Content/toastr.min.css" rel="stylesheet" />
+
+  <script src="Scripts/jquery-3.0.0.min.js"></script>
+  <script src="Scripts/popper.min.js"></script>
+  <script src="Scripts/bootstrap.min.js"></script>
+  <script src="Scripts/toastr.min.js"></script>
 
   <title class="mb-5">Hot News</title>
 
@@ -18,10 +24,13 @@
 
 <body>
   <form id="form1" runat="server">
-    <asp:Panel ID="MenuPanel" runat="server" Width="100%">
+    <asp:Panel ID="MenuPanel" runat="server" Width="100%" style="margin-bottom: 55px">
     </asp:Panel>
+
+    <asp:Panel ID="ResponsePanel" runat="server" Visible="false"/>
+
     <div>
-      <div class="container" style="margin-top:55px">
+      <div class="container">
         <div id="my_carousel" class="carousel slide" data-ride="carousel">
           <ul class="carousel-indicators">
             <li data-target="#my_carousel" data-slide-to="0" class="active"></li>
@@ -31,21 +40,22 @@
 
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <a href="index.aspx?Domain=Games"><img class="d-block w-100 img-fluid" src="resources/games_news.jpg" alt="First Slide" /></a>
+              <a href="index.aspx?Domain=Games">
+                <img class="d-block w-100 img-fluid" src="resources/games_news.jpg" alt="First Slide" /></a>
             </div>
             <div class="carousel-item">
-              <a href="index.aspx?Domain=Politics"><img class="d-block w-100 img-fluid" src="resources/politics_news.jpeg" alt="Second Slide" /></a>
+              <a href="index.aspx?Domain=Politics">
+                <img class="d-block w-100 img-fluid" src="resources/politics_news.jpeg" alt="Second Slide" /></a>
             </div>
             <div class="carousel-item">
-              <a href="index.aspx?Domain=Science"><img class="d-block w-100 img-fluid" src="resources/science_news.jpg" alt="Third Slide" /></a>
+              <a href="index.aspx?Domain=Science">
+                <img class="d-block w-100 img-fluid" src="resources/science_news.jpg" alt="Third Slide" /></a>
             </div>
           </div>
         </div>
       </div>
 
       <asp:Label ID="Label1" Style="text-align: center" runat="server" Text="Hot News" Font-Size="30" Width="100%"></asp:Label>
-
-      <asp:Label ID="ResponseLabel" runat="server" Visible="false"></asp:Label>
 
       <asp:ContentPlaceHolder ID="body" runat="server">
       </asp:ContentPlaceHolder>
@@ -60,10 +70,6 @@
     buttongroup la articole (delete, publish, etc.)
     carusel cu 4 imagini / 4 linkuri catre home/games...  
 -->
-
-  <script src="Scripts/jquery-3.0.0.min.js"></script>
-  <script src="Scripts/popper.min.js"></script>
-  <script src="Scripts/bootstrap.min.js"></script>
 </body>
 
 </html>

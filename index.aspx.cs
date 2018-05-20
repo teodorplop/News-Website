@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
@@ -171,8 +172,7 @@ public partial class index : System.Web.UI.Page {
 			Response.Redirect("login.aspx");
 			return;
 		}
-
-
+		
 		string buttonID = (sender as Button).ID;
 		string newsID = buttonID.Remove(buttonID.Length - 8);
 		string textBoxID = newsID + "_textBox";
